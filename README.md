@@ -1,6 +1,6 @@
 # 鲲鹏 S2：三题协作与实验记录
 
-仓库：[Palm0palM/kunpeng-s2](https://github.com/Palm0palM/kunpeng-s2)。目标是让 Agent 完成“提出方案 → 修改候选 → 超算测试 → 留存结果”，两人从共同基线尝试不同方法；比赛平台的正式提交由本人负责。
+当前仓库：[abuyabislital987-afk/kunpeng-s2](https://github.com/abuyabislital987-afk/kunpeng-s2)，上游：[Palm0palM/kunpeng-s2](https://github.com/Palm0palM/kunpeng-s2)。目标是让 Agent 完成“提出方案 → 修改候选 → 超算测试 → 留存结果”，两人从共同基线尝试不同方法；比赛平台的正式提交由本人负责。
 
 `conv/`、`zgemm/`、`trsm/` 保存当前晋级版本。现有版本的验证范围与环境见 [基线说明](docs/BASELINES.md)，不要把历史测试直接当作当前排行榜成绩。
 
@@ -14,7 +14,9 @@
    目标服务器为 `10.44.9.4`，本次登录节点为 login08。会话失效时先检查 VPN，再按用户授权的认证方式恢复，不把密码写入仓库。`tools/connect.py` 是可选的交互登录辅助工具。
 3. 给 Agent 使用 [启动提示词](prompts/optimize.md)。最新分工为本任务负责 CONV，用户另开任务负责 [ZGEMM](prompts/zgemm.md) 和 [TRSM](prompts/trsm.md)；每题使用独立实验目录与作业 ID，禁止取消他人作业。
 
-当前工作位于本地 `setup/agent-workflow` 分支，GitHub 账户只有 READ 权限，尚未推送。
+本地工作分支为 `setup/agent-workflow`；`origin` 保留上游仓库，`personal` 指向当前账号的仓库。已验证成果发布到个人仓库的 `main` 分支。
+
+CONV 本轮保留 C0-r2，四组用例各三轮耗时中位数合计 1867.77 ms，三个候选均未晋级。完整结果见 [CONV 实测记录](docs/CONV_RESULTS.md)，提交包对应的源码校验见 [包清单](outputs/conv-best.json)。
 
 ## 先重测当前基线
 
