@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "problem": "zgemm",
+  "version": "Z1-pack",
+  "parent": "Z0",
+  "strategy": "仅重排A为3行K优先的连续微面板并用NEON向量lane读取9个分量，减少内核A的独立加载流和load指令；保留3x4形状、MB24及3M运算顺序",
+  "created_at": "2026-09-08T00:05:18.253572+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "TEST_RUNS": "3"
+    }
+  },
+  "source_hashes": {
+    "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
+    "bench_zgemm.c": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+    "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+    "zgemm.c": "3a26f10b2080d057cace983db2fa26c375e654e219991e23e2e61eb58baefba9"
+  },
+  "status": "prepared",
+  "note": "A三行K连续打包；本机1/4线程各594组UBSan通过仅作正确性回归；源码sha256=3a26f10b2080d057cace983db2fa26c375e654e219991e23e2e61eb58baefba9。官方benchmark及runner与Z0逐字节一致；待Z0完成后同环境三轮完整官方套件，TEST_RUNS=3，未晋级。",
+  "updated_at": "2026-09-08T00:37:42.010012+00:00",
+  "verified": false
+}

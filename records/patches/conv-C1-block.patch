@@ -1,0 +1,102 @@
+--- a/conv2d.c
++++ b/conv2d.c
+@@ -1,4 +1,7 @@
+ #include <stddef.h>
++#if defined(__ARM_NEON)
++#include <arm_neon.h>
++#endif
+ 
+ typedef float CONVFLOAT;
+ typedef int CONVINT;
+@@ -12,7 +15,8 @@
+  * SIMD lane 对应不同输出，不能对同一输出做 partial sum 后重新求和。
+  * benchmark 与本文件都要使用 -ffp-contract=off，且不能使用 fast-math。
+  *
+- * 本轮只写代码：寄存器驻留、向量指令、速度和 PASS 均待目标机器验证。
++ * C1-block candidate: reuse overlapping loads in the 32-column NEON tile.
++ * Local correctness checked; target performance remains unmeasured.
+  */
+ #ifdef __FAST_MATH__
+ #error "Strict reference accumulation requires disabling fast-math"
+@@ -97,7 +101,81 @@
+     }                                                                       \
+ }
+ 
++#if defined(__ARM_NEON) && CONV_BLOCK == 32
++/* Reuse overlapping vectors across adjacent kernel columns. Keep each
++ * product rounded separately and preserve the reference summation order. */
++CONV_INLINE void conv_tile_main(const float *restrict base, size_t stride,
++                                const float *restrict kernel, int kh, int kw,
++                                float *restrict dst)
++{
++    float32x4_t a0 = vdupq_n_f32(0.0f);
++    float32x4_t a1 = vdupq_n_f32(0.0f);
++    float32x4_t a2 = vdupq_n_f32(0.0f);
++    float32x4_t a3 = vdupq_n_f32(0.0f);
++    float32x4_t a4 = vdupq_n_f32(0.0f);
++    float32x4_t a5 = vdupq_n_f32(0.0f);
++    float32x4_t a6 = vdupq_n_f32(0.0f);
++    float32x4_t a7 = vdupq_n_f32(0.0f);
++    for (int jk = 0; jk < kh; ++jk) {
++        const float *row = base + (size_t)jk * stride;
++        const float *krow = kernel + (size_t)jk * (size_t)kw;
++        int ik = 0;
++        if (CONV_KERNEL_UNROLL == 2) {
++            for (; ik < kw - 1; ik += 2) {
++                const float *w = row + ik;
++                const float32x4_t k0 = vdupq_n_f32(krow[ik]);
++                const float32x4_t k1 = vdupq_n_f32(krow[ik + 1]);
++                const float32x4_t u0 = vld1q_f32(w + 0);
++                const float32x4_t u1 = vld1q_f32(w + 4);
++                const float32x4_t u2 = vld1q_f32(w + 8);
++                const float32x4_t u3 = vld1q_f32(w + 12);
++                const float32x4_t u4 = vld1q_f32(w + 16);
++                const float32x4_t u5 = vld1q_f32(w + 20);
++                const float32x4_t u6 = vld1q_f32(w + 24);
++                const float32x4_t u7 = vld1q_f32(w + 28);
++                a0 = vaddq_f32(a0, vmulq_f32(u0, k0));
++                a0 = vaddq_f32(a0, vmulq_f32(vextq_f32(u0, u1, 1), k1));
++                a1 = vaddq_f32(a1, vmulq_f32(u1, k0));
++                a1 = vaddq_f32(a1, vmulq_f32(vextq_f32(u1, u2, 1), k1));
++                a2 = vaddq_f32(a2, vmulq_f32(u2, k0));
++                a2 = vaddq_f32(a2, vmulq_f32(vextq_f32(u2, u3, 1), k1));
++                a3 = vaddq_f32(a3, vmulq_f32(u3, k0));
++                a3 = vaddq_f32(a3, vmulq_f32(vextq_f32(u3, u4, 1), k1));
++                a4 = vaddq_f32(a4, vmulq_f32(u4, k0));
++                a4 = vaddq_f32(a4, vmulq_f32(vextq_f32(u4, u5, 1), k1));
++                a5 = vaddq_f32(a5, vmulq_f32(u5, k0));
++                a5 = vaddq_f32(a5, vmulq_f32(vextq_f32(u5, u6, 1), k1));
++                a6 = vaddq_f32(a6, vmulq_f32(u6, k0));
++                a6 = vaddq_f32(a6, vmulq_f32(vextq_f32(u6, u7, 1), k1));
++                a7 = vaddq_f32(a7, vmulq_f32(u7, k0));
++                /* Load 29..32 directly: loading 32..35 would overread the edge. */
++                a7 = vaddq_f32(a7, vmulq_f32(vld1q_f32(w + 29), k1));
++            }
++        }
++        for (; ik < kw; ++ik) {
++            const float32x4_t k = vdupq_n_f32(krow[ik]);
++            a0 = vaddq_f32(a0, vmulq_f32(vld1q_f32(row + ik + 0), k));
++            a1 = vaddq_f32(a1, vmulq_f32(vld1q_f32(row + ik + 4), k));
++            a2 = vaddq_f32(a2, vmulq_f32(vld1q_f32(row + ik + 8), k));
++            a3 = vaddq_f32(a3, vmulq_f32(vld1q_f32(row + ik + 12), k));
++            a4 = vaddq_f32(a4, vmulq_f32(vld1q_f32(row + ik + 16), k));
++            a5 = vaddq_f32(a5, vmulq_f32(vld1q_f32(row + ik + 20), k));
++            a6 = vaddq_f32(a6, vmulq_f32(vld1q_f32(row + ik + 24), k));
++            a7 = vaddq_f32(a7, vmulq_f32(vld1q_f32(row + ik + 28), k));
++        }
++    }
++    vst1q_f32(dst + 0, a0);
++    vst1q_f32(dst + 4, a1);
++    vst1q_f32(dst + 8, a2);
++    vst1q_f32(dst + 12, a3);
++    vst1q_f32(dst + 16, a4);
++    vst1q_f32(dst + 20, a5);
++    vst1q_f32(dst + 24, a6);
++    vst1q_f32(dst + 28, a7);
++}
++#else
+ DEFINE_CONV_TILE(conv_tile_main, CONV_BLOCK)
++#endif
+ DEFINE_CONV_TILE(conv_tile_16, 16)
+ DEFINE_CONV_TILE(conv_tile_8, 8)
+ DEFINE_CONV_TILE(conv_tile_4, 4)

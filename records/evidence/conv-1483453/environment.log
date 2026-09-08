@@ -1,0 +1,7 @@
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Host=cn22965 CPU target=generic
+Block=32 Unroll=2 Threads=38 Bind=close Places=cores Node=5

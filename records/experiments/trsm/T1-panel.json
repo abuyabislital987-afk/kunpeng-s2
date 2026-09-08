@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "problem": "trsm",
+  "version": "T1-panel",
+  "parent": "T0",
+  "strategy": "大工作集分块前代每个已解256x8右端项块共享打包为连续面板，使所有下方4x8更新复用连续读取，降低跨行大步长访存；其余算法与分块不变",
+  "created_at": "2026-09-08T00:05:51.737331+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "KBLAS_LIB": "/home/share/huzhenghong/other-20260907/blas-verified/libopenblas.a",
+      "TEST_RUNS": "3"
+    }
+  },
+  "source_hashes": {
+    "README.md": "caaf354e35ddcc97eaa725e94381bbb9876d164bd61ec7dc24626489cbe68d2d",
+    "bench_trsm.c": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+    "compat/kblas.h": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+    "run.sh": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+    "trsm.c": "fea6ee11cce8785ac3f13f641f9feb195a829493a27a9c902000a743545dbf73"
+  },
+  "status": "prepared",
+  "note": "2026-09-08 鲲鹏比较准备：保持既有源码和官方 benchmark，OpenBLAS 静态参考库待补记哈希；wrapper 3 轮，每用例 TEST_RUNS=3；不得声称官方 KML 复验。 T1-panel 已通过本机 UBSan 正常、边界及分配失败回退检查。",
+  "updated_at": "2026-09-08T00:37:43.633541+00:00",
+  "verified": false
+}

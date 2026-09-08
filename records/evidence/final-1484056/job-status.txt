@@ -1,0 +1,85 @@
+Basic Details:
+    jobId                               	1484056                                           	
+    name                                	final_package_verified                            	
+    state                               	SUCCEEDED                                         	
+    user                                	huzhenghong                                       	
+    queue                               	q_kunpeng                                         	
+    account                             	common                                            	
+    cmd                                 	bash verify-final-packages-v2.sh                  	
+    submitNode                          	login06                                           	
+    createTime                          	2026/09/07 22:29:42                               	
+    startTime                           	2026/09/07 22:29:44                               	
+    lastModifiedTime                    	-                                                 	
+    endTime                             	2026/09/07 22:32:23                               	
+    currentOperation                    	EMPTY                                             	
+    jobRequeueMaxCnt                    	0                                                 	
+    jobRequeueCurrentCnt                	0                                                 	
+    mpiType                             	DEFAULT                                           	
+    interactionMode                     	DEFAULT                                           	
+    assistJob                           	DEFAULT                                           	
+    x11ForwardEnabled                   	false                                             	
+    description                         	-                                                 	
+    transferType                        	LOCAL                                             	
+    forwardTime                         	-                                                 	
+    recallTime                          	-                                                 	
+    autoResize                          	false                                             	
+Scheduling Details:
+    exclusive                           	false                                             	
+    priority                            	1                                                 	
+    adminPriority                       	-1                                                	
+    expectSchedTime                     	-                                                 	
+    startTimeEstimated                  	-                                                 	
+    reserveRes                          	-                                                 	
+    backfillRes                         	-                                                 	
+    backfilledRes                       	-                                                 	
+Resource Details:
+    reqJobLicense                       	-
+    allocJobLicense                     	-
+    resGroup[0]:
+        replica                         	1                                                 	
+        labels                          	queue_q_kunpeng aarch64                           	
+        preferNodes                     	-                                                 	
+        reqNodeSelectPolicy             	-                                                 	
+        effNodeSelectPolicy             	SEQUENCE                                          	
+        reqCPU                          	38                                                	
+        reqMem                          	24576                                             	
+        reqGPU                          	gpu:0
+        reqNPU                          	0
+        allocCPU                        	38                                                	
+        allocMem                        	24576                                             	
+        allocGPU                        	gpu:0
+        allocNPU                        	0
+        reqTaskLicense                  	-
+        allocTaskLicense                	-
+        reqAffinity                     	numa[count=1]                                     	
+Runtime Details:
+    execNodes                           	cn22965                                           	
+    execNodeCnt                         	1                                                 	
+    execPath                            	/home/share/huzhenghong/other-20260907            	
+    resizeCmd                           	-                                                 	
+    timeout                             	600                                               	
+    stderrRedirectPath                  	-                                                 	
+    stderrRedirectType                  	append                                            	
+    stdoutRedirectPath                  	/home/share/huzhenghong/other-20260907/final-verification-v2.log	
+    stdoutRedirectType                  	override                                          	
+    totalUtime                          	3892                                              	
+    totalStime                          	8                                                 	
+    totalMaxMemSwp                      	14371                                             	
+    totalMaxMem                         	14371                                             	
+    hostPreHookRunTime                  	0                                                 	
+    preHookRunTime                      	0                                                 	
+    jobWallclockDuration                	157                                               	
+    postHookRunTime                     	0                                                 	
+    hostPostHookRunTime                 	0                                                 	
+    jobSstoppedTime                     	0                                                 	
+    coreHours                           	5966                                              	
+    jobExitCode                         	0                                                 	
+    systemExitCode                      	0                                                 	
+    exitMessage                         	Job execution succeeded                           	
+    stderrRedirectOutputPath            	-                                                 	
+    stdoutRedirectOutputPath            	/home/share/huzhenghong/other-20260907/final-verification-v2.log	
+    traceMessages                       	2026/09/07 22:29:42    :    [JOB_ADD] Job 1484056 is submitted by huzhenghong, job state is PENDING.	
+                                        	2026/09/07 22:29:44    :    [JOB_START] Job 1484056 start message has been sent.	
+                                        	2026/09/07 22:29:44    :    [JOB_START_ACK] Job 1484056 start message has been received by agent cn22965.	
+                                        	2026/09/07 22:29:44    :    [JOB_EXECUTION] Job 1484056 state is from PENDING to RUNNING, execution path: /home/share/huzhenghong/other-20260907.	
+                                        	2026/09/07 22:32:23    :    [JOB_FINISH] Job 1484056 state is from RUNNING to SUCCEEDED.	

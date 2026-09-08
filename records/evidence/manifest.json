@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "origin": "Existing local records copied without changes; no new remote job was run.",
+  "original_workspace": "/Users/lingsu011900/Downloads/conv",
+  "files": [
+    {
+      "path": "records/evidence/conv-1483453/benchmark.log",
+      "original_workspace_path": "results/remote-20260907-job1483453/benchmark.log",
+      "sha256": "9731d01684838051e506fc4cabbd97f342317566abaf1fad3476687296a9b5b9",
+      "bytes": 2412
+    },
+    {
+      "path": "records/evidence/conv-1483453/job-status.txt",
+      "original_workspace_path": "results/remote-20260907-job1483453/job-status.txt",
+      "sha256": "dd808f62820b122f1df4b14ffc8c8fac89405202fa9168655cdebeacaa95f13e",
+      "bytes": 7511
+    },
+    {
+      "path": "records/evidence/conv-1483453/source-sha256.txt",
+      "original_workspace_path": "results/remote-20260907-job1483453/source-sha256.txt",
+      "sha256": "53ccba34957a63ed38f5617e19e48b833a6aa9e727dbf0b5a728ed19e2b12a0f",
+      "bytes": 306
+    },
+    {
+      "path": "records/evidence/conv-1483453/environment.log",
+      "original_workspace_path": "results/remote-20260907-job1483453/run-20260907-183616-oHTJkh/environment.log",
+      "sha256": "7bdadd372f36aa0bcc4c4e194af029984fd1cd187ec47c6fa14972146477b2b9",
+      "bytes": 311
+    },
+    {
+      "path": "records/evidence/conv-1483453/REPORT.md",
+      "original_workspace_path": "results/remote-20260907-job1483453/REPORT.md",
+      "sha256": "607713a0117d1e002482d26a4b05e30f2e90a77cd99e48661423ba2b3c90c3bf",
+      "bytes": 2717
+    },
+    {
+      "path": "records/evidence/conv-1483483/benchmark.log",
+      "original_workspace_path": "submission/package-check.log",
+      "sha256": "cebf19d396de4958ac2eff0146d5ef8fa128a6de31ce5845a9b119d698d971b3",
+      "bytes": 2317
+    },
+    {
+      "path": "records/evidence/conv-1483483/STATUS.md",
+      "original_workspace_path": "submission/STATUS.md",
+      "sha256": "6bb1751b30abd9b2f4c769343cd501db3cdb93e157014514f1d50b3d062431b1",
+      "bytes": 835
+    },
+    {
+      "path": "records/evidence/final-1484056/benchmark.log",
+      "original_workspace_path": "other-problems/results/final-verification/verified/final-verification-v2.log",
+      "sha256": "5b5a85eea5c63ec63b8dad6b815411f71251a74d1b41f1d62114789759f74cbc",
+      "bytes": 1944
+    },
+    {
+      "path": "records/evidence/final-1484056/job-status.txt",
+      "original_workspace_path": "other-problems/results/final-verification/verified/job-status.txt",
+      "sha256": "a5b96e42f2102c793560f0014bd46ad891620fabcc8b78a139cf29990b24c65c",
+      "bytes": 7431
+    },
+    {
+      "path": "records/evidence/final-1484056/source-sha256.txt",
+      "original_workspace_path": "other-problems/results/final-verification/verified/source-sha256.txt",
+      "sha256": "ce30326cfe92980713d331b3488aeba3a4ad179dcb7280e003c3d372ed1bae99",
+      "bytes": 984
+    },
+    {
+      "path": "records/evidence/final-1484056/environment.txt",
+      "original_workspace_path": "other-problems/results/final-verification/verified/environment.txt",
+      "sha256": "aff734ef7acb6d0d57fd04744ee27b84df408701e56b1499507d99a68b41002a",
+      "bytes": 3223
+    },
+    {
+      "path": "records/evidence/final-1484056/edge-check.log",
+      "original_workspace_path": "other-problems/results/final-verification/verified/edge-check.log",
+      "sha256": "169a5a432e4bc923053a8988afd8c6e1fb0deac417bf43dfccc596b5c79c45a8",
+      "bytes": 145
+    },
+    {
+      "path": "records/evidence/final-1484056/sanitizer.log",
+      "original_workspace_path": "other-problems/results/final-verification/verified/sanitizer.log",
+      "sha256": "9e570a47cbd5eb928bc032f7229a860eff17ccbc90b325f6500182ecbe145772",
+      "bytes": 86
+    }
+  ]
+}

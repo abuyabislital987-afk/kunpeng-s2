@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C1-block",
+  "parent": "C0-r1",
+  "strategy": "32列NEON块内复用相邻kernel列的重叠输入向量：每两个kernel元素16次向量加载减为9次，新增7次vext；保持float乘加分离和累加顺序，待鲲鹏测量确认。",
+  "created_at": "2026-09-08T00:04:38.169404+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "d604b28ab3d8700f0c3421b840e7f2993d9124736dd84f9dfc9c0b5a122d92dc",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T00:39:29.762986+00:00",
+  "environment": "kunpeng-cn22965-gcc10-generic-38",
+  "reference": "official-internal",
+  "verified": true,
+  "log_sha256": "78fab5a95a45ea81e317f15afe454652b20120a3fb9320f1025dd6a74e0d6181",
+  "log": "records/evidence/conv-C1-block/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        252.5,
+        252.39,
+        252.5
+      ],
+      "median_ms": 252.5,
+      "min_ms": 252.39,
+      "max_ms": 252.5,
+      "spread_pct": 0.04356435643564897,
+      "gflops": [
+        298.5161,
+        298.6461,
+        298.5189
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        280.63,
+        280.15,
+        279.75
+      ],
+      "median_ms": 280.15,
+      "min_ms": 279.75,
+      "max_ms": 280.63,
+      "spread_pct": 0.3141174370872731,
+      "gflops": [
+        296.6032,
+        297.1135,
+        297.5345
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        539.1,
+        539.18,
+        539.68
+      ],
+      "median_ms": 539.18,
+      "min_ms": 539.1,
+      "max_ms": 539.68,
+      "spread_pct": 0.10757075559181115,
+      "gflops": [
+        298.7845,
+        298.7407,
+        298.4638
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        1161.25,
+        1170.36,
+        1162.32
+      ],
+      "median_ms": 1162.32,
+      "min_ms": 1161.25,
+      "max_ms": 1170.36,
+      "spread_pct": 0.783777273040118,
+      "gflops": [
+        297.7584,
+        295.4411,
+        297.4836
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 2234.1499999999996,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "cn22965",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "4",
+    "ALLOWED_CPUS": "152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485177",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "evidence_dir": "records/evidence/conv-C1-block",
+  "decision": "not_promoted",
+  "decision_note": "All official cases passed, but sum of per-case medians is 19.49% slower than C0-r1. Keep C0-r1.",
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -19.49% 未超过测量波动/最低1%门槛 1.28%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 213.58,
+        "candidate_ms": 252.5,
+        "gain_pct": -18.222680026219678
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 239.6,
+        "candidate_ms": 280.15,
+        "gain_pct": -16.924040066777955
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 450.5,
+        "candidate_ms": 539.18,
+        "gain_pct": -19.684794672586005
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 966.02,
+        "candidate_ms": 1162.32,
+        "gain_pct": -20.320490259000845
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "state": "submitted",
+  "created_at": "2026-09-08T00:36:13.575616+00:00",
+  "remote_dir": "/home/share/huzhenghong/kunpeng-experiments/kp-C0-r1-18751b00efb0",
+  "host": "10.44.9.4",
+  "user": "huzhenghong",
+  "port": 22,
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "job_id": "1485175",
+  "submission_started_at": "2026-09-08T00:36:13.918306+00:00",
+  "submit_command": "dsub -n kp-C0-r1-18751b00efb0 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /home/share/huzhenghong/kunpeng-experiments/kp-C0-r1-18751b00efb0/wrapper.stdout.log /bin/bash -l /home/share/huzhenghong/kunpeng-experiments/kp-C0-r1-18751b00efb0/remote_job.sh",
+  "submitted_at": "2026-09-08T00:36:14.485294+00:00",
+  "status_checked_at": "2026-09-08T00:37:48.029865+00:00",
+  "status_returncode": 0,
+  "scheduler_status": {
+    "status": "SUCCEEDED",
+    "state": "SUCCEEDED",
+    "jobId": "1485175",
+    "jobExitCode": 0,
+    "systemExitCode": 0
+  },
+  "fetch_state": "complete",
+  "fetched_at": "2026-09-08T00:37:48.558473+00:00",
+  "artifacts_sha256": {
+    "benchmark.log": "aa628cd15a0528a9c578921657312621c7de98e48417280af322afca7732e030",
+    "environment.log": "161cc31fcd88305631d3e9f3eb1291c7d70eb3048320c735bf06282b6cc4e607",
+    "source-sha256.txt": "3111308bf21c7484684e961cd80d6a032de93f02c411d1b12cecd3828664c412",
+    "exit-code.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+  }
+}

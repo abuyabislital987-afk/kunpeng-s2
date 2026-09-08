@@ -1,0 +1,95 @@
+Basic Details:
+    jobId                               	1485177                                           	
+    name                                	kp-C1-block-0d6b68ad41b7                          	
+    state                               	SUCCEEDED                                         	
+    user                                	huzhenghong                                       	
+    queue                               	q_kunpeng                                         	
+    account                             	common                                            	
+    cmd                                 	/bin/bash -l /home/share/huzhenghong/kunpeng-experiments/kp-C1-block-0d6b68ad41b7/remote_job.sh	
+    submitNode                          	login08                                           	
+    createTime                          	2026/09/08 08:37:09                               	
+    startTime                           	2026/09/08 08:37:12                               	
+    lastModifiedTime                    	-                                                 	
+    endTime                             	2026/09/08 08:38:45                               	
+    currentOperation                    	EMPTY                                             	
+    jobRequeueMaxCnt                    	0                                                 	
+    jobRequeueCurrentCnt                	0                                                 	
+    mpiType                             	DEFAULT                                           	
+    interactionMode                     	DEFAULT                                           	
+    assistJob                           	DEFAULT                                           	
+    x11ForwardEnabled                   	false                                             	
+    description                         	-                                                 	
+    transferType                        	LOCAL                                             	
+    forwardTime                         	-                                                 	
+    recallTime                          	-                                                 	
+    autoResize                          	false                                             	
+Scheduling Details:
+    exclusive                           	false                                             	
+    priority                            	1                                                 	
+    adminPriority                       	-1                                                	
+    expectSchedTime                     	-                                                 	
+    startTimeEstimated                  	-                                                 	
+    reserveRes                          	-                                                 	
+    backfillRes                         	-                                                 	
+    backfilledRes                       	-                                                 	
+Resource Details:
+    reqJobLicense                       	-
+    allocJobLicense                     	-
+    resGroup[0]:
+        minReplica                      	1                                                 	
+        replica                         	1                                                 	
+        labels                          	queue_q_kunpeng aarch64                           	
+        preferNodes                     	-                                                 	
+        reqNodeSelectPolicy             	-                                                 	
+        effNodeSelectPolicy             	SEQUENCE                                          	
+        reqCPU                          	38                                                	
+        reqMem                          	24576                                             	
+        reqGPU                          	gpu:0
+        reqNPU                          	0
+        allocCPU                        	38                                                	
+        allocMem                        	24576                                             	
+        allocGPU                        	gpu:0
+        allocNPU                        	0
+        reqTaskLicense                  	-
+        allocTaskLicense                	-
+        reqAffinity                     	numa[count=1, distribution=pack]                  	
+    allocAffinity                       	
+        execNode             resGroup resIndex hwThreads        gpuIds           npuIds          
+        cn22965              0        0/1      152-189          -                -               
+Runtime Details:
+    execNodes                           	cn22965                                           	
+    execNodeCnt                         	1                                                 	
+    execPath                            	/home/share/huzhenghong                           	
+    resizeCmd                           	-                                                 	
+    timeout                             	1800                                              	
+    stderrRedirectPath                  	-                                                 	
+    stderrRedirectType                  	append                                            	
+    stdoutRedirectPath                  	/home/share/huzhenghong/kunpeng-experiments/kp-C1-block-0d6b68ad41b7/wrapper.stdout.log	
+    stdoutRedirectType                  	append                                            	
+    totalUtime                          	2850                                              	
+    totalStime                          	8                                                 	
+    totalMaxMemSwp                      	0                                                 	
+    totalMaxMem                         	0                                                 	
+    hostPreHookRunTime                  	0                                                 	
+    preHookRunTime                      	0                                                 	
+    jobWallclockDuration                	91                                                	
+    postHookRunTime                     	0                                                 	
+    hostPostHookRunTime                 	0                                                 	
+    jobSstoppedTime                     	0                                                 	
+    coreHours                           	3458                                              	
+    jobExitCode                         	0                                                 	
+    systemExitCode                      	0                                                 	
+    exitMessage                         	Job execution succeeded                           	
+    stderrRedirectOutputPath            	-                                                 	
+    stdoutRedirectOutputPath            	/home/share/huzhenghong/kunpeng-experiments/kp-C1-block-0d6b68ad41b7/wrapper.stdout.log	
+    nodeUsages                          	
+        execNode             resGroup resIndex utime    stime    wallclockDuration    sstoppedTime     cpuUtil          gpuUtil          npuUtil          memResource                     
+        cn22965              0        0/1      2850     8        91                   0                3144/3355        -                -                0/0/0/0/414/414/104/0           
+    nodePids                            	
+        execNode             pids    
+        cn22965              -       
+    traceMessages                       	2026/09/08 08:37:09    :    [JOB_ADD] Job 1485177 is submitted by huzhenghong, job state is PENDING.	
+                                        	2026/09/08 08:37:12    :    [JOB_START] Job 1485177 start message has been sent.	
+                                        	2026/09/08 08:37:12    :    [JOB_START_ACK] Job 1485177 start message has been received by agent cn22965.	
+                                        	2026/09/08 08:37:12    :    [JOB_EXECUTION] Job 1485177 state is from PENDING to RUNNING, execution path: /home/share/huzhenghong.	
+                                        	2026/09/08 08:38:45    :    [JOB_FINISH] Job 1485177 state is from RUNNING to SUCCEEDED.	

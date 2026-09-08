@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C3-u1",
+  "parent": "C0-r2",
+  "strategy": "Keep 32 output columns and switch kernel loop unroll from 2 to 1; test reduced temporary-register pressure without changing accumulation order.",
+  "created_at": "2026-09-08T00:46:29.048361+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+    "run.sh": "d8871bfeedf179705cae4aee30f28c2ae33357f3524b685a7c1f5049fb6620ce"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T00:49:43.048418+00:00",
+  "environment": "kunpeng-cn22965-gcc10-generic-38",
+  "reference": "official-internal",
+  "verified": true,
+  "log_sha256": "e807d48e640e0508761e8b40c222803ddfc497c813c0a27c1f88ecc374db8646",
+  "log": "records/evidence/conv-C3-u1/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        213.22,
+        213.25,
+        215.58
+      ],
+      "median_ms": 213.25,
+      "min_ms": 213.22,
+      "max_ms": 215.58,
+      "spread_pct": 1.1066822977725739,
+      "gflops": [
+        353.5107,
+        353.4666,
+        349.643
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        241.57,
+        240.46,
+        240.97
+      ],
+      "median_ms": 240.97,
+      "min_ms": 240.46,
+      "max_ms": 241.57,
+      "spread_pct": 0.4606382537245239,
+      "gflops": [
+        344.5686,
+        346.1482,
+        345.4128
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        453.92,
+        453.25,
+        454.25
+      ],
+      "median_ms": 453.92,
+      "min_ms": 453.25,
+      "max_ms": 454.25,
+      "spread_pct": 0.22030313711667251,
+      "gflops": [
+        354.8542,
+        355.3785,
+        354.5966
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        980.39,
+        975.64,
+        975.03
+      ],
+      "median_ms": 975.64,
+      "min_ms": 975.03,
+      "max_ms": 980.39,
+      "spread_pct": 0.5493829691279585,
+      "gflops": [
+        352.6869,
+        354.4044,
+        354.6261
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 1883.7800000000002,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "cn22965",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "4",
+    "ALLOWED_CPUS": "152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485195",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "evidence_dir": "records/evidence/conv-C3-u1",
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "提速 -0.86% 未超过测量波动/最低1%门槛 1.46%",
+      "至少一组退步超过1%，需评估官方计分权重后再决定"
+    ],
+    "cases": [
+      {
+        "dims": [
+          4096,
+          6144,
+          39,
+          39
+        ],
+        "base_ms": 213.65,
+        "candidate_ms": 213.25,
+        "gain_pct": 0.18722209220688307
+      },
+      {
+        "dims": [
+          6144,
+          4096,
+          41,
+          41
+        ],
+        "base_ms": 239.25,
+        "candidate_ms": 240.97,
+        "gain_pct": -0.7189132706374081
+      },
+      {
+        "dims": [
+          4256,
+          6390,
+          55,
+          55
+        ],
+        "base_ms": 449.93,
+        "candidate_ms": 453.92,
+        "gain_pct": -0.8868046140510766
+      },
+      {
+        "dims": [
+          6390,
+          4256,
+          81,
+          81
+        ],
+        "base_ms": 964.94,
+        "candidate_ms": 975.64,
+        "gain_pct": -1.1088772358903072
+      }
+    ],
+    "metric": "sum of per-case median ms; not official score"
+  },
+  "decision": "not_promoted"
+}

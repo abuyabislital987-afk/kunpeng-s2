@@ -1,0 +1,41 @@
+Started: 2026-09-07T18:36:16+08:00
+cn22965
+Allocated CPUs=190-227 NUMA_NODE=5
+Compiler modules unavailable at /home/HPC/HPCKit/latest/modulefiles; using compiler from PATH.
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Host=cn22965 CPU target=generic
+Block=32 Unroll=2 Threads=38 Bind=close Places=cores Node=5
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4096 x  6144     39 x    39       224.42     335.8663     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6144 x  4096     41 x    41       241.21     345.0793     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4256 x  6390     55 x    55       449.97     357.9701     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6390 x  4256     81 x    81       966.07     357.9154     0.00e+00     PASS
+PASS cases: 4; total of printed times: 1881.67 ms
+Results: /home/share/huzhenghong/conv-20260907-1835/results/run-20260907-183616-oHTJkh
+Finished: 2026-09-07T18:36:43+08:00

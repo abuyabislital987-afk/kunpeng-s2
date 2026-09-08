@@ -1,0 +1,518 @@
+{
+  "schema_version": 1,
+  "imported_at": "2026-09-08",
+  "provenance": "Historical local evidence imported without rerunning benchmarks. Version snapshots are copied from existing submission sources.",
+  "metric": {
+    "name": "sum_of_printed_case_mean_times_ms",
+    "direction": "lower_is_better",
+    "official_score": false,
+    "ranking": null,
+    "note": "各 case 的平均耗时由官方程序打印并舍入到 0.01 ms；合计仅供同题比较，不代替官方评分。"
+  },
+  "dimension_order": {
+    "conv": [
+      "input_height",
+      "input_width",
+      "kernel_height",
+      "kernel_width"
+    ],
+    "zgemm": [
+      "M",
+      "N",
+      "K"
+    ],
+    "trsm": [
+      "M",
+      "N"
+    ]
+  },
+  "versions": [
+    {
+      "id": "C0",
+      "problem": "conv",
+      "historical_name": "CONV V2",
+      "source_files": [
+        {
+          "path": "conv/conv2d.c",
+          "sha256": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+          "role": "operator"
+        },
+        {
+          "path": "conv/bench_conv.c",
+          "sha256": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+          "role": "benchmark"
+        },
+        {
+          "path": "conv/run.sh",
+          "sha256": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+          "role": "runner"
+        }
+      ],
+      "strategy": "输出方向 32 路分块；固定 16/8/4/2/1 尾块；kernel 两步展开；保持每个输出的累加顺序。",
+      "reference_run": "conv-1483453",
+      "reference_run_id": "conv-1483453",
+      "package_validation_run_id": "conv-1483483",
+      "reference_total_time_ms": 1881.67,
+      "runs": [
+        {
+          "id": "conv-1483453",
+          "version": "C0",
+          "problem": "conv",
+          "date": "2026-09-07",
+          "job_id": 1483453,
+          "status": "SUCCEEDED",
+          "status_evidence": "scheduler_record",
+          "host": "cn22965",
+          "queue": "q_kunpeng",
+          "architecture": "aarch64",
+          "threads": 38,
+          "compiler": "GCC 10.3.1",
+          "omp_proc_bind": "close",
+          "omp_places": "cores",
+          "cpus": "190-227",
+          "numa_node": 5,
+          "compiler_flags": "-O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2",
+          "link_flags": "-lm",
+          "reference_library": "Official bench_conv.c internal reference; no external BLAS",
+          "test_runs": 1,
+          "warmup_runs": 1,
+          "test_runs_evidence": "Original REPORT.md; original run.sh supplied 1 for each case.",
+          "time_statistic": "arithmetic_mean_of_test_runs_printed_to_0.01_ms",
+          "source_sha256": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+          "benchmark_sha256": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+          "runner_sha256": "f4a7110d93ee32315967ab49409b69c6f53d36988ad86a00269fa5918fb67b75",
+          "remote_wrapper_sha256": "04202fad5d1da1262e80d8bcb2bda44d9f5eac5159d7c4cb1fdde491ee70f5f0",
+          "runner_differs_from_version_snapshot": true,
+          "tolerance": 1e-05,
+          "total_time_ms": 1881.67,
+          "cases": [
+            {
+              "case_id": 0,
+              "dims": [
+                4096,
+                6144,
+                39,
+                39
+              ],
+              "time_ms": 224.42,
+              "gflops": 335.8663,
+              "max_error": 0,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 1,
+              "dims": [
+                6144,
+                4096,
+                41,
+                41
+              ],
+              "time_ms": 241.21,
+              "gflops": 345.0793,
+              "max_error": 0,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 2,
+              "dims": [
+                4256,
+                6390,
+                55,
+                55
+              ],
+              "time_ms": 449.97,
+              "gflops": 357.9701,
+              "max_error": 0,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 3,
+              "dims": [
+                6390,
+                4256,
+                81,
+                81
+              ],
+              "time_ms": 966.07,
+              "gflops": 357.9154,
+              "max_error": 0,
+              "correctness": "PASS"
+            }
+          ],
+          "evidence": {
+            "benchmark": "records/evidence/conv-1483453/benchmark.log",
+            "job_status": "records/evidence/conv-1483453/job-status.txt",
+            "source_hashes": "records/evidence/conv-1483453/source-sha256.txt",
+            "environment": "records/evidence/conv-1483453/environment.log",
+            "report": "records/evidence/conv-1483453/REPORT.md"
+          },
+          "validation_limits": [
+            "Only four official dimensions were tested; no unoptimized baseline or ranking was measured.",
+            "Historical runner differs from the current C0 submission runner. Operator and benchmark hashes match.",
+            "The official benchmark retains its original unused-variable and uninitialized self-reference warnings.",
+            "One timing per case; no run-to-run variance is available."
+          ]
+        },
+        {
+          "id": "conv-1483483",
+          "version": "C0",
+          "problem": "conv",
+          "date": "2026-09-07",
+          "job_id": 1483483,
+          "status": "SUCCEEDED",
+          "status_evidence": "STATUS.md statement; independent scheduler record is absent from local evidence",
+          "host": "cn22965",
+          "queue": "q_kunpeng",
+          "architecture": "aarch64",
+          "threads": 38,
+          "compiler": "GCC 10.3.1",
+          "omp_proc_bind": "close",
+          "omp_places": "cores",
+          "cpus": null,
+          "numa_node": 6,
+          "compiler_flags": "-O3 -std=c11 -Wall -Wextra -fno-fast-math -ffp-contract=off -mcpu=generic -fopenmp -DCONV_BLOCK=32 -DCONV_KERNEL_UNROLL=2",
+          "compiler_flags_evidence": "Current submission runner; runtime log confirms generic target, block 32, unroll 2, GCC 10.3.1.",
+          "link_flags": "-lm",
+          "reference_library": "Official bench_conv.c internal reference; no external BLAS",
+          "test_runs": 1,
+          "warmup_runs": 1,
+          "test_runs_evidence": "Submission runner supplies 1 for each case.",
+          "time_statistic": "arithmetic_mean_of_test_runs_printed_to_0.01_ms",
+          "source_sha256": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+          "benchmark_sha256": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+          "runner_sha256": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868",
+          "runner_differs_from_version_snapshot": false,
+          "tolerance": 1e-05,
+          "total_time_ms": 1869.83,
+          "cases": [
+            {
+              "case_id": 0,
+              "dims": [
+                4096,
+                6144,
+                39,
+                39
+              ],
+              "time_ms": 213.59,
+              "gflops": 352.8987,
+              "max_error": 0,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 1,
+              "dims": [
+                6144,
+                4096,
+                41,
+                41
+              ],
+              "time_ms": 239.25,
+              "gflops": 347.8969,
+              "max_error": 0,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 2,
+              "dims": [
+                4256,
+                6390,
+                55,
+                55
+              ],
+              "time_ms": 452.73,
+              "gflops": 355.787,
+              "max_error": 0,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 3,
+              "dims": [
+                6390,
+                4256,
+                81,
+                81
+              ],
+              "time_ms": 964.26,
+              "gflops": 358.5893,
+              "max_error": 0,
+              "correctness": "PASS"
+            }
+          ],
+          "evidence": {
+            "benchmark": "records/evidence/conv-1483483/benchmark.log",
+            "report": "records/evidence/conv-1483483/STATUS.md"
+          },
+          "validation_limits": [
+            "The independent scheduler record and contemporaneous source-hash file are not present locally; job success and package correspondence are documented in STATUS.md.",
+            "The current ZIP hash matches STATUS.md, and its operator/benchmark bytes match the fully recorded 1483453 source hashes.",
+            "This is a second run of the C0 operator, not a new optimized version.",
+            "NUMA differs from the reference run; do not treat the small timing difference as demonstrated optimization."
+          ]
+        }
+      ],
+      "original_package": {
+        "filename": "conv.zip",
+        "sha256": "f038f604eb62fb8fd2029530a39b32d34e532c3a95d797830c0f45ec14fde045",
+        "bytes": 8946
+      }
+    },
+    {
+      "id": "Z0",
+      "problem": "zgemm",
+      "historical_name": "最终三乘法版本",
+      "source_files": [
+        {
+          "path": "zgemm/zgemm.c",
+          "sha256": "1bf7a5630cbb5c75c21ff3b1407829ab3d26f0ea007510f819ec4a41fb9d1690",
+          "role": "operator"
+        },
+        {
+          "path": "zgemm/bench_zgemm.c",
+          "sha256": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+          "role": "benchmark"
+        },
+        {
+          "path": "zgemm/run.sh",
+          "sha256": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+          "role": "runner"
+        }
+      ],
+      "strategy": "3×4 NEON 微内核；打包实部、虚部及两者之和；三个实数点积恢复复数结果；24 行缓存块。",
+      "reference_run": "zgemm-1484056",
+      "reference_run_id": "zgemm-1484056",
+      "reference_total_time_ms": 4566.78,
+      "runs": [
+        {
+          "host": "cn22965",
+          "queue": "q_kunpeng",
+          "architecture": "aarch64",
+          "threads": 38,
+          "compiler": "GCC 10.3.1",
+          "omp_proc_bind": "close",
+          "omp_places": "cores",
+          "date": "2026-09-07",
+          "job_id": 1484056,
+          "status": "SUCCEEDED",
+          "status_evidence": "scheduler_record",
+          "cpus": "76-113",
+          "numa_node": 2,
+          "compiler_flags": "-O3 -ffp-contract=off -fopenmp -mcpu=generic",
+          "link_flags": "-lm",
+          "test_runs": 3,
+          "test_runs_evidence": "Existing other-problems/tests/verify-final-packages-v2.sh exports TEST_RUNS=3; other-problems/RESULTS.md records three-run means.",
+          "time_statistic": "arithmetic_mean_of_test_runs_printed_to_0.01_ms",
+          "runner_differs_from_version_snapshot": false,
+          "evidence": {
+            "benchmark": "records/evidence/final-1484056/benchmark.log",
+            "job_status": "records/evidence/final-1484056/job-status.txt",
+            "source_hashes": "records/evidence/final-1484056/source-sha256.txt",
+            "environment": "records/evidence/final-1484056/environment.txt",
+            "edge_checks": "records/evidence/final-1484056/edge-check.log",
+            "sanitizers": "records/evidence/final-1484056/sanitizer.log"
+          },
+          "server_sanitizers": "NOT_RUN: server lacks libasan/libubsan",
+          "id": "zgemm-1484056",
+          "version": "Z0",
+          "problem": "zgemm",
+          "source_sha256": "1bf7a5630cbb5c75c21ff3b1407829ab3d26f0ea007510f819ec4a41fb9d1690",
+          "benchmark_sha256": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+          "runner_sha256": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+          "reference_library": "Official bench_zgemm.c internal reference; no external BLAS",
+          "tolerance": 1e-10,
+          "total_time_ms": 4566.78,
+          "cases": [
+            {
+              "case_id": 0,
+              "dims": [
+                7427,
+                7427,
+                256
+              ],
+              "time_ms": 300.6,
+              "gflops": 375.8078,
+              "max_error": 3.05e-12,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 1,
+              "dims": [
+                14848,
+                14848,
+                256
+              ],
+              "time_ms": 1179.34,
+              "gflops": 382.8496,
+              "max_error": 3.51e-12,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 2,
+              "dims": [
+                37360,
+                8192,
+                512
+              ],
+              "time_ms": 3086.84,
+              "gflops": 406.1089,
+              "max_error": 6.04e-12,
+              "correctness": "PASS"
+            }
+          ],
+          "gflops_formula": "8*M*N*K / seconds / 1e9 (official effective GFLOPS despite the 3-multiply implementation)",
+          "edge_cases": {
+            "count": 270,
+            "correctness": "PASS",
+            "reference": "long double",
+            "max_error": 1.847e-14
+          },
+          "validation_limits": [
+            "Three-run averages are available, but individual timing samples and variance are not.",
+            "Final ZIP, source, benchmark and runner hashes match the historical server evidence.",
+            "No official submission score, ranking or global-optimality result is available.",
+            "Server ASan/UBSan were not run."
+          ]
+        }
+      ],
+      "original_package": {
+        "filename": "zgemm.zip",
+        "sha256": "37809fd6e17133f443f9c22e79e84326c92b432eb22ed75cb132e8f98c7a59c3",
+        "bytes": 8342
+      }
+    },
+    {
+      "id": "T0",
+      "problem": "trsm",
+      "historical_name": "最终混合 TRSM 版本",
+      "source_files": [
+        {
+          "path": "trsm/trsm.c",
+          "sha256": "6b66766196b2a6024fcbbeac45ff1b4189e19cc8ac8d75d001e4ddfea004abac",
+          "role": "operator"
+        },
+        {
+          "path": "trsm/bench_trsm.c",
+          "sha256": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+          "role": "benchmark"
+        },
+        {
+          "path": "trsm/run.sh",
+          "sha256": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+          "role": "runner"
+        },
+        {
+          "path": "trsm/compat/kblas.h",
+          "sha256": "7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b",
+          "role": "header"
+        }
+      ],
+      "strategy": "三角矩阵工作集不超过 64 MiB 时使用 4×8 打包前代；否则使用 256 行对角块、64×64 更新块和 4×8 NEON 更新微内核。64 MiB 是算法选择预算，并非机器缓存容量声明。",
+      "reference_run": "trsm-1484056",
+      "reference_run_id": "trsm-1484056",
+      "reference_total_time_ms": 777.85,
+      "runs": [
+        {
+          "host": "cn22965",
+          "queue": "q_kunpeng",
+          "architecture": "aarch64",
+          "threads": 38,
+          "compiler": "GCC 10.3.1",
+          "omp_proc_bind": "close",
+          "omp_places": "cores",
+          "date": "2026-09-07",
+          "job_id": 1484056,
+          "status": "SUCCEEDED",
+          "status_evidence": "scheduler_record",
+          "cpus": "76-113",
+          "numa_node": 2,
+          "compiler_flags": "-O3 -ffp-contract=off -fopenmp -mcpu=generic -Icompat",
+          "link_flags": "-lm",
+          "test_runs": 3,
+          "test_runs_evidence": "Existing other-problems/tests/verify-final-packages-v2.sh exports TEST_RUNS=3; other-problems/RESULTS.md records three-run means.",
+          "time_statistic": "arithmetic_mean_of_test_runs_printed_to_0.01_ms",
+          "runner_differs_from_version_snapshot": false,
+          "evidence": {
+            "benchmark": "records/evidence/final-1484056/benchmark.log",
+            "job_status": "records/evidence/final-1484056/job-status.txt",
+            "source_hashes": "records/evidence/final-1484056/source-sha256.txt",
+            "environment": "records/evidence/final-1484056/environment.txt",
+            "edge_checks": "records/evidence/final-1484056/edge-check.log",
+            "sanitizers": "records/evidence/final-1484056/sanitizer.log"
+          },
+          "server_sanitizers": "NOT_RUN: server lacks libasan/libubsan",
+          "id": "trsm-1484056",
+          "version": "T0",
+          "problem": "trsm",
+          "source_sha256": "6b66766196b2a6024fcbbeac45ff1b4189e19cc8ac8d75d001e4ddfea004abac",
+          "benchmark_sha256": "e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac",
+          "runner_sha256": "ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21",
+          "reference_library": "OpenBLAS 0.3.28 static library; benchmark input generation and matrix copying only; operator does not call BLAS",
+          "reference_library_sha256": null,
+          "official_kml_verified": false,
+          "tolerance": 1e-12,
+          "total_time_ms": 777.85,
+          "cases": [
+            {
+              "case_id": 0,
+              "dims": [
+                512,
+                19968
+              ],
+              "time_ms": 22.21,
+              "gflops": 235.6548,
+              "max_error": 1.67e-16,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 1,
+              "dims": [
+                2432,
+                17024
+              ],
+              "time_ms": 253.85,
+              "gflops": 396.6549,
+              "max_error": 2.22e-16,
+              "correctness": "PASS"
+            },
+            {
+              "case_id": 2,
+              "dims": [
+                17024,
+                512
+              ],
+              "time_ms": 501.79,
+              "gflops": 295.715,
+              "max_error": 1.11e-15,
+              "correctness": "PASS"
+            }
+          ],
+          "gflops_formula": "M*M*N / seconds / 1e9",
+          "edge_cases": {
+            "count": 7,
+            "correctness": "PASS",
+            "reference": "independent known solution; padding and L unchanged",
+            "max_error": 2.776e-16
+          },
+          "validation_limits": [
+            "The benchmark reference library differs from official KML 25.2.0; official KML has not been verified.",
+            "No binary hash for the reference OpenBLAS library was preserved in the selected evidence.",
+            "Three-run averages are available, but individual timing samples and variance are not.",
+            "Final ZIP, source, benchmark and runner hashes match the historical server evidence.",
+            "No official submission score, ranking or global-optimality result is available.",
+            "Server ASan/UBSan were not run."
+          ]
+        }
+      ],
+      "original_package": {
+        "filename": "trsm.zip",
+        "sha256": "cecda928735e1198697cc5b4858ef5c47d91da71090b01e5691b7aa1baa296bb",
+        "bytes": 8369
+      }
+    }
+  ],
+  "validation_limits": [
+    "C0/Z0/T0 are verified starting snapshots, not demonstrated global fastest versions or ranking percentiles.",
+    "Historical measurements may use different NUMA nodes, runners, repeat counts, or reference libraries; compare only after recording these differences.",
+    "Official OBS submission and leaderboard scores are not recorded.",
+    "Copied evidence is byte-for-byte original. Relative file links embedded inside original reports may still refer to their original workspace context."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "state": "submitted",
+  "created_at": "2026-09-08T00:33:39.379818+00:00",
+  "remote_dir": "/home/share/huzhenghong/kunpeng-experiments/kp-C0-d8974ce4a9c3",
+  "host": "10.44.9.4",
+  "user": "huzhenghong",
+  "port": 22,
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "job_id": "1485173",
+  "submission_started_at": "2026-09-08T00:33:39.797112+00:00",
+  "submit_command": "dsub -n kp-C0-d8974ce4a9c3 -q q_kunpeng -R cpu=38,mem=24576 -a 'numa[count=1,distribution=pack]' -T 1800 -o /home/share/huzhenghong/kunpeng-experiments/kp-C0-d8974ce4a9c3/wrapper.stdout.log /bin/bash -l /home/share/huzhenghong/kunpeng-experiments/kp-C0-d8974ce4a9c3/remote_job.sh",
+  "submitted_at": "2026-09-08T00:33:40.305767+00:00",
+  "status_checked_at": "2026-09-08T00:33:52.188664+00:00",
+  "status_returncode": 0,
+  "scheduler_status": null,
+  "fetch_state": "complete",
+  "fetched_at": "2026-09-08T00:34:06.372478+00:00",
+  "artifacts_sha256": {
+    "benchmark.log": "e6ec9906d666e6cd6c6b55b90ff3de5596e70a41dfca1df612f3396a3c51ccb4",
+    "environment.log": "5c49baadab33724c740e13b8f712e0847344053b12fd223bfffc320c0740893f",
+    "source-sha256.txt": "3111308bf21c7484684e961cd80d6a032de93f02c411d1b12cecd3828664c412",
+    "exit-code.txt": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+  }
+}

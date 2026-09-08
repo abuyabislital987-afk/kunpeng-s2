@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C0-r2",
+  "parent": null,
+  "strategy": "Recheck unchanged 32-column baseline immediately before the single-step kernel-loop candidate",
+  "created_at": "2026-09-08T00:46:29.002782+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+    "run.sh": "6aa53c3f5d3fc8ddf8ae6a898043f4f1c40f8778db5d71bb7be6087983349868"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T00:48:07.613718+00:00",
+  "environment": "kunpeng-cn22965-gcc10-generic-38",
+  "reference": "official-internal",
+  "verified": true,
+  "log_sha256": "b3a698a7926036f8b7639f939f7187e3db8a467dc1831129c9c565f476eb3020",
+  "log": "records/evidence/conv-C0-r2/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        213.65,
+        213.47,
+        214.45
+      ],
+      "median_ms": 213.65,
+      "min_ms": 213.47,
+      "max_ms": 214.45,
+      "spread_pct": 0.45869412590685227,
+      "gflops": [
+        352.7968,
+        353.0887,
+        351.4744
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        239.0,
+        242.49,
+        239.25
+      ],
+      "median_ms": 239.25,
+      "min_ms": 239.0,
+      "max_ms": 242.49,
+      "spread_pct": 1.4587251828631176,
+      "gflops": [
+        348.2719,
+        343.2528,
+        347.8982
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        449.93,
+        449.93,
+        450.79
+      ],
+      "median_ms": 449.93,
+      "min_ms": 449.93,
+      "max_ms": 450.79,
+      "spread_pct": 0.19114084413131235,
+      "gflops": [
+        358.0,
+        357.9976,
+        357.3166
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        964.77,
+        964.94,
+        966.1
+      ],
+      "median_ms": 964.94,
+      "min_ms": 964.77,
+      "max_ms": 966.1,
+      "spread_pct": 0.137832404087305,
+      "gflops": [
+        358.3999,
+        358.3337,
+        357.9041
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 1867.77,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "cn22965",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "4",
+    "ALLOWED_CPUS": "152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485192",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "promoted_at": "2026-09-08T00:48:07.662008+00:00",
+  "evidence_dir": "records/evidence/conv-C0-r2"
+}

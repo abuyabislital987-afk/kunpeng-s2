@@ -1,0 +1,28 @@
+{
+  "host": "REPLACE_WITH_CLUSTER_HOST",
+  "user": "REPLACE_WITH_USERNAME",
+  "port": 22,
+  "remote_root": "/REPLACE_WITH_ABSOLUTE_HOME/kunpeng-experiments",
+  "known_hosts": null,
+  "control_path": null,
+  "connect_timeout": 10,
+  "command_timeout": 45,
+  "transfer_timeout": 120,
+  "bench_repeats": 3,
+  "environment": {},
+  "scheduler": {
+    "queue": "q_kunpeng",
+    "cpus": 38,
+    "memory_mb": 24576,
+    "numa_count": 1,
+    "numa_distribution": "pack",
+    "walltime_seconds": 1800,
+    "status_argv": [
+      "djob",
+      "-ll",
+      "{job_id}"
+    ],
+    "status_note": "Verified with this cluster djob --help on 2026-09-08; verbose text contains jobId/state/jobExitCode/systemExitCode.",
+    "job_id_pattern": "(?im)\\bjob\\s*(?:<|id\\s*[:=]?\\s*)([0-9]+)>?"
+  }
+}

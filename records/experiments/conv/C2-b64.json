@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "problem": "conv",
+  "version": "C2-b64",
+  "parent": "C0-r1",
+  "strategy": "Increase output tile from 32 to 64 while preserving scalar accumulation order; reduce kernel reload and loop overhead; verify register-pressure tradeoff.",
+  "created_at": "2026-09-08T00:40:54.570212+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "OMP_NUM_THREADS": "38",
+      "OMP_DYNAMIC": "FALSE",
+      "OMP_PROC_BIND": "close",
+      "OMP_PLACES": "cores",
+      "CPU_TARGET": "generic"
+    },
+    "scheduler_resources": {
+      "queue": "q_kunpeng",
+      "cpus": 38,
+      "memory_mb": 24576,
+      "numa_count": 1,
+      "numa_distribution": "pack",
+      "walltime_seconds": 1800
+    },
+    "numa_policy": "38 allowed CPUs within one NUMA node"
+  },
+  "source_hashes": {
+    "README.md": "97526cd2b7e9d54dc1fc3d83902e85fa4d729bcbc00178d243a4e22cf5912fe8",
+    "bench_conv.c": "2548861ae7e29826e454b4c0b098d682f7f04996222e664cd1ea9bc92dd2e927",
+    "conv2d.c": "78a336ca08eb6a47b02a452ae0bea5ff1c2e516c4b9a5dbd33f428bf41e2933e",
+    "run.sh": "ed88f4e2a315687be6656507b1407dc814311ef15831312cdafce032168c8150"
+  },
+  "status": "passed",
+  "recorded_at": "2026-09-08T00:43:26.783892+00:00",
+  "environment": "kunpeng-cn22965-gcc10-generic-38",
+  "reference": "official-internal",
+  "verified": true,
+  "log_sha256": "f93e0ed58cdcc6578b199f13bace91c46f07314726a7650a05af8a26b2b1487a",
+  "log": "records/evidence/conv-C2-b64/benchmark.log",
+  "cases": [
+    {
+      "dims": [
+        4096,
+        6144,
+        39,
+        39
+      ],
+      "times_ms": [
+        307.24,
+        306.74,
+        307.16
+      ],
+      "median_ms": 307.16,
+      "min_ms": 306.74,
+      "max_ms": 307.24,
+      "spread_pct": 0.1627816121890871,
+      "gflops": [
+        245.3309,
+        245.729,
+        245.397
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6144,
+        4096,
+        41,
+        41
+      ],
+      "times_ms": [
+        338.28,
+        339.2,
+        333.17
+      ],
+      "median_ms": 338.28,
+      "min_ms": 333.17,
+      "max_ms": 339.2,
+      "spread_pct": 1.782547002483142,
+      "gflops": [
+        246.0578,
+        245.3872,
+        249.833
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        4256,
+        6390,
+        55,
+        55
+      ],
+      "times_ms": [
+        651.71,
+        652.13,
+        652.33
+      ],
+      "median_ms": 652.13,
+      "min_ms": 651.71,
+      "max_ms": 652.33,
+      "spread_pct": 0.09507306825326309,
+      "gflops": [
+        247.1547,
+        246.9971,
+        246.9228
+      ],
+      "max_error": 0.0
+    },
+    {
+      "dims": [
+        6390,
+        4256,
+        81,
+        81
+      ],
+      "times_ms": [
+        1388.1,
+        1389.27,
+        1387.67
+      ],
+      "median_ms": 1388.1,
+      "min_ms": 1387.67,
+      "max_ms": 1389.27,
+      "spread_pct": 0.1152654707874007,
+      "gflops": [
+        249.0978,
+        248.8874,
+        249.1743
+      ],
+      "max_error": 0.0
+    }
+  ],
+  "repeats": 3,
+  "total_median_ms": 2685.67,
+  "official_score": null,
+  "ranking": null,
+  "machine": {
+    "HOST": "cn22965",
+    "ARCH": "aarch64",
+    "NUMA_NODE": "6",
+    "ALLOWED_CPUS": "228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265",
+    "OMP_NUM_THREADS": "38",
+    "CPU_TARGET": "generic",
+    "compiler_banners": [
+      "gcc (GCC) 10.3.1"
+    ]
+  },
+  "job_id": "1485184",
+  "checks": {
+    "scheduler": true,
+    "fetched_log": true,
+    "benchmark": true,
+    "wrapper": true,
+    "source_hashes": true,
+    "machine": true
+  },
+  "evidence_dir": "records/evidence/conv-C2-b64",
+  "decision": "not_promoted",
+  "decision_note": "Official cases pass; physical NUMA allocation differs from C0-r1, so no controlled speedup claim or promotion.",
+  "comparison": {
+    "eligible": false,
+    "reasons": [
+      "machine 不同，需同环境重测"
+    ],
+    "cases": [],
+    "metric": "sum of per-case median ms; not official score"
+  }
+}

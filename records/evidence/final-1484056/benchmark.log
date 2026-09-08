@@ -1,0 +1,32 @@
+FINAL_WORKDIR=/home/share/huzhenghong/other-20260907/final-verify-B0iXSM
+37809fd6e17133f443f9c22e79e84326c92b432eb22ed75cb132e8f98c7a59c3  final-zgemm.zip
+cecda928735e1198697cc5b4858ef5c47d91da71090b01e5691b7aa1baa296bb  final-trsm.zip
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+Reference BLAS override: /home/share/huzhenghong/other-20260907/blas-verified/libopenblas.a (与官方 KML 配置不同)
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+   512 x 19968        22.21     235.6548     1.67e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+  2432 x 17024       253.85     396.6549     2.22e-16     PASS
+
+================================= TRSM测试 ================================
+     M       N     Time(ms)       GFLOPS 最大误差   校验
+---------------------------------------------------------------------------
+ 17024 x   512       501.79     295.7150     1.11e-15     PASS
+All three official cases PASS. Logs: results/run-20260907-222947-WaJ59L
+Compiler: gcc (GCC) 10.3.1
+CPUs=76-113 NUMA=2 threads=38
+  7427 x  7427 x   256       300.60     375.8078     3.05e-12     PASS
+ 14848 x 14848 x   256      1179.34     382.8496     3.51e-12     PASS
+ 37360 x  8192 x   512      3086.84     406.1089     6.04e-12     PASS
+All three official cases PASS. Logs: results/run-20260907-222955-62mo22
+ZGEMM: 270 cases PASS; long-double reference max error 1.847e-14
+TRSM: 7 cases PASS; known solution max error 2.776e-16; padding and L unchanged
+SANITIZERS NOT RUN: server lacks libasan/libubsan; functional checks above completed.
+FINAL PACKAGES: ALL FUNCTIONAL TESTS PASS

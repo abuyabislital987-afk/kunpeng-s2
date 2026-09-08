@@ -1,0 +1,11 @@
+--- a/run.sh
++++ b/run.sh
+@@ -21,7 +21,7 @@
+ 
+ CC="${CC:-$DEFAULT_CC}"
+ CONV_BLOCK="${CONV_BLOCK:-32}"
+-CONV_KERNEL_UNROLL="${CONV_KERNEL_UNROLL:-2}"
++CONV_KERNEL_UNROLL="${CONV_KERNEL_UNROLL:-1}"
+ [[ "$CONV_BLOCK" =~ ^[1-9][0-9]{0,5}$ ]] || {
+     echo "CONV_BLOCK must be a positive integer <= 999999" >&2; exit 2;
+ }

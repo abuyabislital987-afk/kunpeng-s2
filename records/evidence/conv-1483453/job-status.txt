@@ -1,0 +1,86 @@
+Basic Details:
+    jobId                               	1483453                                           	
+    name                                	conv-v2-four-cases                                	
+    state                               	SUCCEEDED                                         	
+    user                                	huzhenghong                                       	
+    queue                               	q_kunpeng                                         	
+    account                             	common                                            	
+    cmd                                 	/bin/bash -l /home/share/huzhenghong/conv-20260907-1835/run_donau.sh	
+    submitNode                          	login06                                           	
+    createTime                          	2026/09/07 18:36:10                               	
+    startTime                           	2026/09/07 18:36:13                               	
+    lastModifiedTime                    	-                                                 	
+    endTime                             	2026/09/07 18:36:43                               	
+    currentOperation                    	EMPTY                                             	
+    jobRequeueMaxCnt                    	0                                                 	
+    jobRequeueCurrentCnt                	0                                                 	
+    mpiType                             	DEFAULT                                           	
+    interactionMode                     	DEFAULT                                           	
+    assistJob                           	DEFAULT                                           	
+    x11ForwardEnabled                   	false                                             	
+    description                         	-                                                 	
+    transferType                        	LOCAL                                             	
+    forwardTime                         	-                                                 	
+    recallTime                          	-                                                 	
+    autoResize                          	false                                             	
+Scheduling Details:
+    exclusive                           	false                                             	
+    priority                            	1                                                 	
+    adminPriority                       	-1                                                	
+    expectSchedTime                     	-                                                 	
+    startTimeEstimated                  	-                                                 	
+    reserveRes                          	-                                                 	
+    backfillRes                         	-                                                 	
+    backfilledRes                       	-                                                 	
+Resource Details:
+    reqJobLicense                       	-
+    allocJobLicense                     	-
+    resGroup[0]:
+        minReplica                      	1                                                 	
+        replica                         	1                                                 	
+        labels                          	queue_q_kunpeng aarch64                           	
+        preferNodes                     	-                                                 	
+        reqNodeSelectPolicy             	-                                                 	
+        effNodeSelectPolicy             	SEQUENCE                                          	
+        reqCPU                          	38                                                	
+        reqMem                          	4096                                              	
+        reqGPU                          	gpu:0
+        reqNPU                          	0
+        allocCPU                        	38                                                	
+        allocMem                        	4096                                              	
+        allocGPU                        	gpu:0
+        allocNPU                        	0
+        reqTaskLicense                  	-
+        allocTaskLicense                	-
+        reqAffinity                     	numa[count=1, distribution=pack]                  	
+Runtime Details:
+    execNodes                           	cn22965                                           	
+    execNodeCnt                         	1                                                 	
+    execPath                            	/home/share/huzhenghong                           	
+    resizeCmd                           	-                                                 	
+    timeout                             	1800                                              	
+    stderrRedirectPath                  	-                                                 	
+    stderrRedirectType                  	append                                            	
+    stdoutRedirectPath                  	/home/share/huzhenghong/conv-20260907-1835/benchmark.log	
+    stdoutRedirectType                  	append                                            	
+    totalUtime                          	909                                               	
+    totalStime                          	2                                                 	
+    totalMaxMemSwp                      	0                                                 	
+    totalMaxMem                         	0                                                 	
+    hostPreHookRunTime                  	0                                                 	
+    preHookRunTime                      	0                                                 	
+    jobWallclockDuration                	29                                                	
+    postHookRunTime                     	0                                                 	
+    hostPostHookRunTime                 	0                                                 	
+    jobSstoppedTime                     	0                                                 	
+    coreHours                           	1102                                              	
+    jobExitCode                         	0                                                 	
+    systemExitCode                      	0                                                 	
+    exitMessage                         	Job execution succeeded                           	
+    stderrRedirectOutputPath            	-                                                 	
+    stdoutRedirectOutputPath            	/home/share/huzhenghong/conv-20260907-1835/benchmark.log	
+    traceMessages                       	2026/09/07 18:36:10    :    [JOB_ADD] Job 1483453 is submitted by huzhenghong, job state is PENDING.	
+                                        	2026/09/07 18:36:13    :    [JOB_START] Job 1483453 start message has been sent.	
+                                        	2026/09/07 18:36:13    :    [JOB_START_ACK] Job 1483453 start message has been received by agent cn22965.	
+                                        	2026/09/07 18:36:13    :    [JOB_EXECUTION] Job 1483453 state is from PENDING to RUNNING, execution path: /home/share/huzhenghong.	
+                                        	2026/09/07 18:36:43    :    [JOB_FINISH] Job 1483453 state is from RUNNING to SUCCEEDED.	

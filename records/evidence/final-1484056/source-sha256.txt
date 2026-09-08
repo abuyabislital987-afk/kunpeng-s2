@@ -1,0 +1,7 @@
+1bf7a5630cbb5c75c21ff3b1407829ab3d26f0ea007510f819ec4a41fb9d1690  /home/share/huzhenghong/other-20260907/final-verify-B0iXSM/zgemm/zgemm.c
+ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929  /home/share/huzhenghong/other-20260907/final-verify-B0iXSM/zgemm/bench_zgemm.c
+15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4  /home/share/huzhenghong/other-20260907/final-verify-B0iXSM/zgemm/run.sh
+6b66766196b2a6024fcbbeac45ff1b4189e19cc8ac8d75d001e4ddfea004abac  /home/share/huzhenghong/other-20260907/final-verify-B0iXSM/trsm/trsm.c
+e051d897622f73093179f93c33cfcf1b5511216f286a3050b814e1dd7582d8ac  /home/share/huzhenghong/other-20260907/final-verify-B0iXSM/trsm/bench_trsm.c
+ff786ed858fcc3dd32f9714ca0e93edc3a92146bc40b4d4fd63f98e47dd0fe21  /home/share/huzhenghong/other-20260907/final-verify-B0iXSM/trsm/run.sh
+7b12cdf204c79d8acd82f6c0657392fb9e3f75726c6109151738b8dfc25aa26b  /home/share/huzhenghong/other-20260907/final-verify-B0iXSM/trsm/compat/kblas.h

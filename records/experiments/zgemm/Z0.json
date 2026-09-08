@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "problem": "zgemm",
+  "version": "Z0",
+  "parent": null,
+  "strategy": "当前ZGEMM已验证源码的同环境三轮基线复测",
+  "created_at": "2026-09-08T00:10:06.098331+00:00",
+  "settings": {
+    "bench_repeats": 3,
+    "environment": {
+      "TEST_RUNS": "3"
+    }
+  },
+  "source_hashes": {
+    "README.md": "7c7700afa703ffe61df1a1a68c48adea37e273232d09298123d16159b6e2facd",
+    "bench_zgemm.c": "ef35dea06b08c58f976065215bbaaa39b254c3b69440697d73fed3e9e7f38929",
+    "run.sh": "15bfd54651b035943d91b4635fc5ce70d76c29ab1eb116a45caf0fe9d66291a4",
+    "zgemm.c": "1bf7a5630cbb5c75c21ff3b1407829ab3d26f0ea007510f819ec4a41fb9d1690"
+  },
+  "status": "prepared",
+  "note": "保持历史Z0源码不变，复用既有实验目录；待鲲鹏三轮完整官方套件，显式TEST_RUNS=3；2026-09-08 doctor已通过，当前等待已有CONV作业1485175完成避免测量互扰。",
+  "updated_at": "2026-09-08T00:37:41.966615+00:00",
+  "verified": false
+}

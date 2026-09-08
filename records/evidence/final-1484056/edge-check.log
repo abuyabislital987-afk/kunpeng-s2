@@ -1,0 +1,2 @@
+ZGEMM: 270 cases PASS; long-double reference max error 1.847e-14
+TRSM: 7 cases PASS; known solution max error 2.776e-16; padding and L unchanged

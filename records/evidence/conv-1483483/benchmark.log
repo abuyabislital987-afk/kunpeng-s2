@@ -1,0 +1,37 @@
+Compiler modules unavailable at /home/HPC/HPCKit/latest/modulefiles; using compiler from PATH.
+gcc (GCC) 10.3.1
+Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Host=cn22965 CPU target=generic
+Block=32 Unroll=2 Threads=38 Bind=close Places=cores Node=6
+bench_conv.c: In function ‘validate_result’:
+bench_conv.c:69:19: warning: unused variable ‘inputHeight’ [-Wunused-variable]
+   69 |     const CONVINT inputHeight = outputHeight + kernelHeight + 1;
+      |                   ^~~~~~~~~~~
+bench_conv.c:70:43: warning: ‘inputWidth’ is used uninitialized in this function [-Wuninitialized]
+   70 |     const CONVINT inputWidth = inputWidth + kernelWidth - 1;
+      |                                ~~~~~~~~~~~^~~~~~~~~~~~~
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4096 x  6144     39 x    39       213.59     352.8987     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6144 x  4096     41 x    41       239.25     347.8969     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  4256 x  6390     55 x    55       452.73     355.7870     0.00e+00     PASS
+
+================================= CONV测试 ================================
+   ImageSize   kernelSize         Time(ms)       GFLOPS     最大误差       校验
+---------------------------------------------------------------------------
+  6390 x  4256     81 x    81       964.26     358.5893     0.00e+00     PASS
+PASS cases: 4; total of printed times: 1869.83 ms
+Results: /home/share/huzhenghong/conv-20260907-1835/package-check/conv/results/run-20260907-184810-AagIPc
